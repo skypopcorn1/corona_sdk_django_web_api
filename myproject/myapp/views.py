@@ -1,6 +1,24 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+from rest_framework.generics import (
+	DestroyAPIView,
+	ListAPIView, 
+	RetrieveAPIView,
+	UpdateAPIView
+	)
+from .models import Person
+from .serializers import MyAppListSerializer, MyAppRetrieveSerializer
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+class MyAppDeleteAPIView(DestroyAPIView):
+	queryset = Person.objects.all()
+	serializer_class = MyAppRetrieveSerializer
+
+class MyAppListAPIView(ListAPIView):
+	queryset = Person.objects.all()
+	serializer_class = MyAppListSerializer
+		
+class MyAppRetrieveAPIView(RetrieveAPIView):
+	queryset = Person.objects.all()
+	serializer_class = MyAppRetrieveSerializer
+
+class MyAppUpdateAPIView(UpdateAPIView):
+	queryset = Person.objects.all()
+	serializer_class = MyAppRetrieveSerializer
