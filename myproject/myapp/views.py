@@ -62,7 +62,6 @@ class MyAppRetrieveAPIView(RetrieveAPIView):
 class MyAppUpdateAPIView(RetrieveUpdateAPIView):
 	queryset = Person.objects.all()
 	serializer_class = MyAppUpdateSerializer
-	permission_classes = [IsAuthenticatedOrReadOnly]
 
 	def put(self, request, *args, **kwargs):
 		return self.partial_update(request, *args, **kwargs)
