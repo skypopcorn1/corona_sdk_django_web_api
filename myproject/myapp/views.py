@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.shortcuts import render
 
 from rest_framework.filters import (
 	SearchFilter,
@@ -65,3 +66,6 @@ class MyAppUpdateAPIView(RetrieveUpdateAPIView):
 
 	def put(self, request, *args, **kwargs):
 		return self.partial_update(request, *args, **kwargs)
+
+def index(request):
+	return render(request, 'index.html')
